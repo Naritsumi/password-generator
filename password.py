@@ -1,14 +1,19 @@
-import string as str
+import string 
 import secrets
 
+rangeInput = int(input())
+rangeLength = int(input())
+symbolsOrNot = bool(input())
+uppercaseOrNot = bool(input())
+
 def generate_password(length: int, symbols: bool, uppercase: bool):
-    combination = str.ascii_lowercase + str.digits
+    combination = string.ascii_lowercase + string.digits
 
     if symbols:
-        combination += str.punctuation
+        combination += string.punctuation
 
     if uppercase:
-        combination += str.ascii_uppercase
+        combination += string.ascii_uppercase
 
     combination_length = len(combination)
 
@@ -19,8 +24,6 @@ def generate_password(length: int, symbols: bool, uppercase: bool):
 
     return new_password
 
-for _, index in enumerate(range(5)):
-    password = generate_password(length=20, symbols=True, uppercase=True)
+for _, index in enumerate(range(rangeInput)):
+    password = generate_password(length=rangeLength, symbols=symbolsOrNot, uppercase=uppercaseOrNot)
     print(index + 1, ">>", password)
-
-#print(generate_password(length=20, symbols=True, uppercase=True))
