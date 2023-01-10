@@ -35,6 +35,7 @@ def menu():
             return False
         else:
             print('Type Y or N')
+            evaluateSymbolsOrNot()
         return symbols
 
     symbolsOrNot = evaluateSymbolsOrNot()
@@ -46,7 +47,8 @@ def menu():
         elif uppercase in no_choices:
             return False
         else:
-            print('Type Y or N')        
+            print('Type Y or N')  
+            evaluateUppercaseOrNot()      
         return uppercase
 
     uppercaseOrNot = evaluateUppercaseOrNot()
@@ -73,7 +75,7 @@ def menu():
     addToClipBoard(password)
 
     def regeneratePassword():
-        regenerate = input("\nDo you want to regenerate password? [Y/N] ")
+        regenerate = input("\nDo you want to regenerate password? [Y/N]: ")
         if regenerate in yes_choices:
             return menu()     
         elif regenerate in no_choices:        
@@ -81,6 +83,7 @@ def menu():
             exit()
         else:
             print('Type Y or N')
+            regeneratePassword()
 
     regeneratePassword()
 
