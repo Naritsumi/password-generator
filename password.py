@@ -2,6 +2,9 @@ import string
 import secrets
 import os
 
+yes_choices = ['YES', 'Y', 'y', 'yes']
+no_choices = ['NO', 'N', 'n', 'yes']
+
 print('\nGoing to generate a unique password...\n')
 rangeInput = 1
 rangeLength = int(input("Number of characters: "))
@@ -22,23 +25,28 @@ def generate_password(length: int, symbols: bool, uppercase: bool):
         new_password += combination[secrets.randbelow(combination_length)]
     return new_password
 
+#Se podría optimizar y unificar en un solo método
 def evaluateSymbolsOrNot():
     symbols = input("Do you want to include Symbols? [Y/N] ")
-    if symbols == "Y":
+    if symbols in yes_choices:
         return True
-    if symbols == "N":
+    elif symbols in no_choices:
         return False
+    else:
+        print('Type Y or N')
     return symbols
 
 symbolsOrNot = evaluateSymbolsOrNot()
 
 def evaluateUppercaseOrNot():
-    uppdercase = input("Do you want to include Uppercase letters? [Y/N] ")
-    if uppdercase == "Y":
+    uppercase = input("Do you want to include Uppercase letters? [Y/N] ")
+    if uppercase in yes_choices:
         return True
-    if uppdercase == "N":
+    elif uppercase in no_choices:
         return False
-    return uppdercase
+    else:
+        print('Type Y or N')
+    return uppercase
 
 uppercaseOrNot = evaluateUppercaseOrNot()
 
@@ -46,7 +54,19 @@ for _, index in enumerate(range(rangeInput)):
     password = generate_password(length=rangeLength, symbols=symbolsOrNot, uppercase=uppercaseOrNot)
     print(index + 1, ">>", password)
 
-command = 'echo ' + password.strip() + '| clip'
-#os.system(command)
-
+command = 'echo ' + password.strip() + '| clip'        
+os.system(command)
 print('Password copied to clipboard')
+
+def copyToClipboard():
+    regenerate = input("Do you want to regenerate password? [Y/N] ")
+    if regenerate in yes_choices:
+        #return menu()             
+        print('\nOk..')
+    elif regenerate in no_choices:        
+        print('\nOk, bye :)')
+        exit()
+    else:
+        print('Type Y or N')
+
+copyToClipboard()
