@@ -1,7 +1,7 @@
 Python password Generator
 ========================
 
- A simple and random password generator, doesn't use random module for security reasons.
+A simple and random password generator, doesn't use random module for security reasons.
 
 This project is a tool that will allow you to generate random passwords according to the size you choose and the needs (uppercase, lowercase, symbols, numbers)
 

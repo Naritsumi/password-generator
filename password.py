@@ -7,6 +7,7 @@ no_choices = ['NO', 'N', 'n', 'yes']
 
 def menu():
     print('\nGoing to generate a unique password...\n')
+    #You can change this to user input and generates x number of passwords
     rangeInput = 1
     rangeLength = int(input("Number of characters: "))
 
@@ -25,8 +26,7 @@ def menu():
         for _ in range(length):
             new_password += combination[secrets.randbelow(combination_length)]
         return new_password
-
-    #Se podría optimizar y unificar en un solo método
+    
     def evaluateSymbolsOrNot():
         symbols = input("Do you want to include Symbols? [Y/N]: ")
         if symbols in yes_choices:
