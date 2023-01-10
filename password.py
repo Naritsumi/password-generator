@@ -46,7 +46,7 @@ def menu():
         elif uppercase in no_choices:
             return False
         else:
-            print('Type Y or N')
+            print('Type Y or N')        
         return uppercase
 
     uppercaseOrNot = evaluateUppercaseOrNot()
@@ -60,11 +60,17 @@ def menu():
         print('\nYour password is WEAK')
 
     else:
-        print('\nYour password is STRONG')
+        print('\nYour password is STRONG')     
 
-    command = 'echo ' + password.strip() + '| clip'        
-    os.system(command)
-    print('Password copied to clipboard')
+    def addToClipBoard(text):
+        try:        
+            command = 'echo | set /p nul=' + text.strip() + '| clip'   
+            os.system(command)            
+            print("Check your clipboard")
+        except:
+            print("An exception occurred copying the password")
+
+    addToClipBoard(password)
 
     def regeneratePassword():
         regenerate = input("\nDo you want to regenerate password? [Y/N] ")
